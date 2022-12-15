@@ -161,8 +161,8 @@ class BlinkDetector():
             waitt = cv2.waitKey(1)
             if waitt == ord("q"):
                 break
-            elif waitt and input_state == False:
-                print("PRESSED")
+            elif (waitt and input_state == False) or (int(time.time() - self.start_time) > 60):
+                print("RESET")
                 print("Blink Count: " + str(self.blink_count) + "\nTotal Time: " + str(int(time.time() - self.start_time)))
                 self.close_all()
                 self.blink_count=0
